@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trivia.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <VBox prefHeight="95.0" prefWidth="295.0" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="qText" graphicTextGap="10.0" prefHeight="27.0" prefWidth="295.0" text="ghjfghjgfhjgfhjhgj" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <RadioButton fx:id="b1" mnemonicParsing="false" onAction="#radioAction" text="b1">
+               <font>
+                  <Font size="18.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="b2" mnemonicParsing="false" onAction="#radioAction" text="b2">
+               <font>
+                  <Font size="18.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="b3" mnemonicParsing="false" onAction="#radioAction" text="b3">
+               <font>
+                  <Font size="18.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="b4" mnemonicParsing="false" onAction="#radioAction" text="b4">
+               <font>
+                  <Font size="18.0" />
+               </font></RadioButton>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
