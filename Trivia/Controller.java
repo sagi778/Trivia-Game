@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
-
 public class Controller {
 
     @FXML
@@ -15,7 +14,7 @@ public class Controller {
     public RadioButton b3;
     public RadioButton b4;
 
-
+    TriviaLogic exam = new TriviaLogic();
 
     public void radioAction(ActionEvent event) {
 
@@ -24,6 +23,6 @@ public class Controller {
         System.out.println("Answer "+ b + " Picked");
     }
 
-    //Scanner input = new Scanner(new File("exam.txt"));
+
 
 }
