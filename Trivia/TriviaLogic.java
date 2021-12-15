@@ -7,47 +7,41 @@ import java.util.Scanner;
 
 public class TriviaLogic {
 
-
-
     // attributes
-    private Scanner _file;
+    private int _count = numberOfQuestionsInFile(); //number of questions in exam.txt file
+    private TriviaQuestion[] _array = new TriviaQuestion[_count];
 
     // constructor
-    public TriviaLogic(){ // construct model & open file for reading
+    public  TriviaLogic(){ // construct model & open file for reading
 
         try {
             Scanner file = new Scanner( new File("exam.txt") ); // open txt file for reading
-            this.setFile( file );
 
-            // get number of questions in file
-            int numOfQuestions = numberOfQuestionsInFile();
-
-            //setting array of TriviaQuestions class
-            TriviaQuestion[] array = new TriviaQuestion[numOfQuestions];
-            for(int i=0; i < numOfQuestions; i++ ){
-
-                array[i] = new TriviaQuestion();
-                array[i].setQuestion( getFile().nextLine() );
-                array[i].setRightAnswer( getFile().nextLine() );
-                array[i].setAnswer1( getFile().nextLine() );
-                array[i].setAnswer2( getFile().nextLine() );
-                array[i].setAnswer3( getFile().nextLine() );
-
+            for(int i=0; i < getCount(); i++ ){
+                this.setQuestionPage(file, i);
             }
-
             file.close();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
-
     //get & set
-    public Scanner getFile(){return _file;}
-    public void setFile(Scanner file){_file = file;}
+    public int getCount(){return _count;}
+    public TriviaQuestion getQuestionPage(int i){return _array[i];}
+    public void setQuestionPage(Scanner file, int index){
+
+        TriviaQuestion temp = new TriviaQuestion();
+
+        temp.setQuestion( file.nextLine() );
+        temp.setRightAnswer( file.nextLine() );
+        temp.setAnswer1( file.nextLine() );
+        temp.setAnswer2( file.nextLine() );
+        temp.setAnswer3( file.nextLine() );
+
+        _array[index] = temp;
+    }
 
     // methods
     private int numberOfQuestionsInFile(){
