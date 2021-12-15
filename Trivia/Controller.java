@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Controller {
+public class Controller{
 
     @FXML
     public Label qText;
@@ -19,22 +19,33 @@ public class Controller {
     public RadioButton b3;
     public RadioButton b4;
 
+    TriviaLogic model = new TriviaLogic();
+
     public void radioAction(ActionEvent event) {
 
         String b = ((RadioButton)event.getSource()).getText(); // get current operation
 
         System.out.println("Answer "+ b + " Picked");
-    }
-    public void beginAction(ActionEvent event) throws IOException {
 
-        System.out.println("Begin Exam");
-        TriviaLogic t = new TriviaLogic();
-
-        Scanner file = new Scanner( new File("exam.txt") ); // open txt file for reading
-        t.initilizeExam(file);
 
     }
-    public void NextAction(ActionEvent actionEvent) {
+    public void NextAction(ActionEvent event)  {
+
+        //model.newPage( model.getFile() ); // show new question/trivia page
         System.out.println("Next");
+
     }
+    public void correctAnswer(ActionEvent event) {
+        System.out.println("correct");
+    }
+
+    private void setPage(TriviaQuestion p){ // setting new question to present in GUI
+
+        qText.setText( p.getQuestion() );
+        b1.setText( p.getRightAnswer() );
+        b2.setText( p.get_answer1() );
+        b3.setText( p.get_answer2() );
+        b4.setText( p.get_answer3() );
+    }
+
 }
