@@ -2,55 +2,95 @@ package Trivia;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TriviaLogic {
 
-    //attributes
-    private TriviaQuestion [] _exam; // contain full exam = array of questions
-
-    public TriviaLogic(){}
-
-    public void initilizeExam(Scanner file) throws FileNotFoundException { //creating new exam from txt file
-
-        String row = file.next();
-        String txt = getText(file);
-        String q = getQuestion(txt);
 
 
-    }
-    public String getText(Scanner file){
+    // attributes
+    private Scanner _file;
 
-        String str = "*";
+    // constructor
+    public TriviaLogic(){ // construct model & open file for reading
 
-        while( file.hasNext() ){
-            str += file.next()+ " ";
+        try {
+            Scanner file = new Scanner( new File("exam.txt") ); // open txt file for reading
+            this.setFile( file );
+
+            // get number of questions in file
+            int numOfQuestions = numberOfQuestionsInFile();
+
+            //setting array of TriviaQuestions class
+            TriviaQuestion[] array = new TriviaQuestion[numOfQuestions];
+            for(int i=0; i < numOfQuestions; i++ ){
+
+                array[i] = new TriviaQuestion();
+                array[i].setQuestion( getFile().nextLine() );
+                array[i].setRightAnswer( getFile().nextLine() );
+                array[i].setAnswer1( getFile().nextLine() );
+                array[i].setAnswer2( getFile().nextLine() );
+                array[i].setAnswer3( getFile().nextLine() );
+
+            }
+
+            file.close();
         }
-        return str;
-    }
-    public String getQuestion(String txt){ //return question string
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        int strt = getNewQuestionStart(txt);
-        int end = getNewQuestionEnd(txt);
 
-        return txt.substring( strt, end )+"?";
     }
-    public int getNewQuestionStart(String txt){ //get new question beginning index
+
+
+    //get & set
+    public Scanner getFile(){return _file;}
+    public void setFile(Scanner file){_file = file;}
+
+    // methods
+    private int numberOfQuestionsInFile(){
+
+        int count=0;
+
+        try (Scanner file = new Scanner(new File("exam.txt"))) {
+
+            while( file.hasNextLine()){
+                count++;
+                file.nextLine();
+            }
+            file.close();
+            return (int)((count/5) -1); //number of questions
+        }
+        catch (FileNotFoundException e){e.printStackTrace();}
+        return -1; //empty file
+    }
+    public TriviaQuestion readNextQuestion(Scanner file) { //creating new exam from txt file
 
         int i=0;
-        while( i < txt.length() && !Character.toString(txt.charAt(i)).equals("*") ){
-            i++;
-        }
-        if( i== txt.length() ){return -1;}
-        else return i;
-    }
-    public int getNewQuestionEnd(String txt){ //get new question end index
 
-        int i=0;
-        while( i < txt.length() && !Character.toString(txt.charAt(i)).equals("?") ){
-            i++;
+        TriviaQuestion p = new TriviaQuestion();
+
+        p.setQuestion( file.nextLine() );
+        p.setRightAnswer( file.nextLine() );
+        p.setAnswer1( file.nextLine() );
+        p.setAnswer2( file.nextLine() );
+        p.setAnswer3( file.nextLine() );
+
+        return p;
+    }
+    public boolean hasNextQuestion(Scanner file){ //check if file contain more questions
+
+        int rowCounter=0;
+        int ROWS_IN_QUESTION = 5;
+
+        while( file.hasNextLine() && rowCounter < ROWS_IN_QUESTION ){
+            rowCounter++;
+            file.nextLine();
         }
-        if( i== txt.length() ){return -1;}
-        else return i;
+        if( rowCounter == ROWS_IN_QUESTION )
+            return true;
+        else return false;
     }
 }
