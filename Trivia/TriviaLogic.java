@@ -60,31 +60,5 @@ public class TriviaLogic {
         catch (FileNotFoundException e){e.printStackTrace();}
         return -1; //empty file
     }
-    public TriviaQuestion readNextQuestion(Scanner file) { //creating new exam from txt file
 
-        int i=0;
-
-        TriviaQuestion p = new TriviaQuestion();
-
-        p.setQuestion( file.nextLine() );
-        p.setRightAnswer( file.nextLine() );
-        p.setAnswer1( file.nextLine() );
-        p.setAnswer2( file.nextLine() );
-        p.setAnswer3( file.nextLine() );
-
-        return p;
-    }
-    public boolean hasNextQuestion(Scanner file){ //check if file contain more questions
-
-        int rowCounter=0;
-        int ROWS_IN_QUESTION = 5;
-
-        while( file.hasNextLine() && rowCounter < ROWS_IN_QUESTION ){
-            rowCounter++;
-            file.nextLine();
-        }
-        if( rowCounter == ROWS_IN_QUESTION )
-            return true;
-        else return false;
-    }
 }
