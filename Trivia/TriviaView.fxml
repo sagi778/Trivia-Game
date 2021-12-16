@@ -10,57 +10,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trivia.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <VBox prefHeight="95.0" prefWidth="295.0" GridPane.rowIndex="1">
-         <children>
-            <Label fx:id="qText" graphicTextGap="10.0" prefHeight="27.0" prefWidth="295.0" text="My Trivia Game" wrapText="true">
+<GridPane alignment="center" hgap="10" prefHeight="348.0" prefWidth="520.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trivia.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <VBox prefHeight="273.0" prefWidth="438.0">
+            <children>
+                <Label fx:id="Title" alignment="TOP_LEFT" graphicTextGap="10.0" prefHeight="27.0" prefWidth="295.0" text="My Trivia Game" wrapText="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+            </Label>
+            <Label fx:id="qText" graphicTextGap="10.0" lineSpacing="5.0" prefHeight="75.0" prefWidth="444.0" text=" - - - " wrapText="true">
                <font>
-                  <Font size="18.0" />
-               </font></Label>
-            <Label fx:id="qText" graphicTextGap="10.0" prefHeight="27.0" prefWidth="295.0" text=" - - - " wrapText="true">
-               <font>
-                  <Font size="24.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <RadioButton fx:id="b1" mnemonicParsing="false" onAction="#radioAction" text="-">
-               <font>
-                  <Font size="18.0" />
-               </font></RadioButton>
-            <RadioButton fx:id="b2" mnemonicParsing="false" onAction="#radioAction" text="-">
-               <font>
-                  <Font size="18.0" />
-               </font></RadioButton>
-            <RadioButton fx:id="b3" mnemonicParsing="false" onAction="#radioAction" text="-">
-               <font>
-                  <Font size="18.0" />
-               </font></RadioButton>
-            <RadioButton fx:id="b4" mnemonicParsing="false" onAction="#radioAction" text="-">
-               <font>
-                  <Font size="18.0" />
-               </font></RadioButton>
+                <RadioButton fx:id="b1" mnemonicParsing="false" onAction="#radioAction" text="-">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+            </RadioButton>
+                <RadioButton fx:id="b2" mnemonicParsing="false" onAction="#radioAction" text="-">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+            </RadioButton>
+                <RadioButton fx:id="b3" mnemonicParsing="false" onAction="#radioAction" text="-">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+            </RadioButton>
+                <RadioButton fx:id="b4" mnemonicParsing="false" onAction="#radioAction" text="-">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+            </RadioButton>
             <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="295.0">
                <children>
-                  <Button fx:id="begin" mnemonicParsing="false" onAction="#beginAction" text="Begin">
+                  <Button fx:id="answer" mnemonicParsing="false" onAction="#correctAnswer" text="Answer">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="next" mnemonicParsing="false" onAction="#NextAction" text="Next">
+                  <Button fx:id="next" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#NextAction" text="Next">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-         </children>
-      </VBox>
-   </children>
+            </children>
+        </VBox>
+    </children>
 </GridPane>
