@@ -39,6 +39,7 @@ public class Controller{
         boolean correctFlag = isCorrect( model.getQuestionPage(_qCount-1).getRightAnswer(), rbGroup);
         String correctString = "Wrong";
         if( correctFlag ){correctString = "correct";}
+        Title.setText( correctString + " Answer" );
         System.out.println( correctString + " Answer");
 
     }
