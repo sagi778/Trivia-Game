@@ -19,7 +19,9 @@ public class Controller{
     public RadioButton b3;
     public RadioButton b4;
 
+    // construct game logic/model
     TriviaLogic model = new TriviaLogic();
+    private int _qCount = 0;
 
     public void radioAction(ActionEvent event) {
 
@@ -32,6 +34,9 @@ public class Controller{
     public void NextAction(ActionEvent event)  {
 
         //model.newPage( model.getFile() ); // show new question/trivia page
+        qText.setText( model.getQuestionPage(_qCount).getQuestion() );
+        _qCount++;
+        //b1.setText( );
         System.out.println("Next");
 
     }
